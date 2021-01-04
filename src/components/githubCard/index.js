@@ -6,34 +6,47 @@ import styled from 'styled-components';
 import Divider from '@material-ui/core/Divider';
 import {PER_PAGE, SCROLL_HEIGHT} from '../../utils/consts';
 
-
 const CardContainer = styled.div`
-padding: 5px 10px;
-display: flex;
-height: ${props => `calc(${props.height} / ${props.perpage})` };
-margin-top: 15px;
-width: 100vw;
-align-items: center;
-justify-content: space-between;
-direction: ltr;
+  padding: 1px 20px;
+  display: flex;
+  height: ${props => `calc(${props.height} / ${props.perpage})` };
+  margin-top: 15px;
+  width: 100vw;
+  align-items: center;
+  justify-content: space-between;
+  direction: ltr;
 `;
 
+const TextWrap = styled.div`
+  height: 100%; 
+  width: 35%; 
+  overflow-wrap: break-word;
+  padding-left: 1%;
+`
+
+const HeaderWrap = styled(TextWrap)`
+  flex: 1;
+`
+
+const EmailText = styled.p`
+    @media (max-width: 600px) {
+      font-size: 10px;
+  }
+`
+
 const githubCard = ({ data }) => {
-  console.log('user data', data)
   return (
     <>
       <CardContainer perpage={PER_PAGE} height={SCROLL_HEIGHT}>
-        <Avatar style={{ height: 100, width: 100 }} alt="Avatar" src={data.avatar_url} />
-        <div style={{ height: '100%', flex: 1, width: '30%', overflowWrap: 'break-word', paddingLeft: '1%'  }}>
-          <p >{data.login}</p>
-        </div>
-        <div style={{ height: '100%', width: '30%', overflowWrap: 'break-word', paddingLeft: '1%' }}>
-          <p style={{height: '10%'}}>{data.html_url}</p>
-        </div>
-
+        <Avatar style={{ height: 90, width: 90 }} alt="Avatar" src={data.avatar_url} />
+        <HeaderWrap>
+          <h3 >{data.login}</h3>
+        </HeaderWrap>
+        <TextWrap>
+          <EmailText>{data.html_url}</EmailText>
+        </TextWrap>
       </CardContainer>
       <Divider style={{ width: 'calc(100vw - 110px)', height: 2 }} />
-
     </>
   )
 }

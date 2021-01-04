@@ -1,12 +1,17 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 import InfiniteList from './InfiniteList';
-import ContainerList from '../containers/containerList';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { useSelector, useDispatch } from 'react-redux'
 import { addPage, getUsersPaging } from "../../store/actions";
 import {selectUsersStore} from '../../store/selctors';
 import {PER_PAGE, SCROLL_HEIGHT} from '../../utils/consts';
+import styled from 'styled-components';
 
+const ContainerList =styled.div`
+    height: ${props => props.height };
+    margin: 0 auto;
+    overflow: scroll;
+`;
 
 const InfiniteScroll = () => {
   const loader = useRef(null);
@@ -34,7 +39,6 @@ const InfiniteScroll = () => {
   }
 
   useEffect(() => {
-    console.log('usersStore.total_count ', usersStore.total_count, 'usersStore.page', usersStore.page, usersStore.total_count / PER_PAGE >= usersStore.page)
     if (usersStore.total_count && !isPaging) {
       return;
     }
@@ -46,9 +50,8 @@ const InfiniteScroll = () => {
       <InfiniteList data={usersStore.users} />
 
       <div className="loading" ref={loader}  >
-        {isPaging ? <LinearProgress /> : null}
+        {isPaging ? <LinearProgress style={{width: 'calc(100vw - 110px'}}/> : null}
         <p style={{ fontSize: '10px', visibility: 'hidden' }}>.</p>
-
       </div>
     </ContainerList>
   )

@@ -1,19 +1,15 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import Paper from '@material-ui/core/Paper';
-import InputBase from '@material-ui/core/InputBase';
-import Divider from '@material-ui/core/Divider';
+import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import { findUsers } from "../../store/actions";
 import { useDispatch } from 'react-redux'
 
 
-const SearchBarContainer = styled(Paper)`
+const SearchBarContainer = styled.div`
     padding: 2px 4px;
     display: flex;
-    position: fixed;
-    top: 10px;
     z-index: 2;
     align-items: center;
     justify-content: space-around;
@@ -38,18 +34,15 @@ const SearchBar = () => {
 
   return (
     <SearchBarContainer>
-
       <IconButton style={{ flex: 1 }}
         type="submit" aria-label="search" onClick={onFind}>
         <SearchIcon />
       </IconButton>
-      <Divider style={{height: 24}}  orientation="vertical" />
-      <InputBase
-        placeholder="Find Users"
-        inputProps={{ 'aria-label': 'Find Users' }}
+      <TextField
+        label="Find Users"
         onChange={handleChange}
+        style={{ flex: 6 }}
         value={val}
-        style={{ flex: 6, padding: 2 }}
       />
     </SearchBarContainer>
   )

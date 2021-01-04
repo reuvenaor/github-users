@@ -14,7 +14,6 @@ function* getUsersPagingSaga() {
     const query = yield select(selectQuery)
     const users = yield select(selectUsers)
     const data = yield call(githubApi, { page, query });
-    console.log('getUsersPagingSaga page, query, data', page, query, data, )
     const newUsers = yield users.concat(data.data.page.items);
     yield put(setUsers({users: newUsers, total_count: data.data.page.total_count}));
   } catch (e) {
