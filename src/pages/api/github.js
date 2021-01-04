@@ -2,8 +2,7 @@
 import assignAll from 'lodash/fp/assignAll';
 import axios from 'axios';
 import parseLinkHeader from 'parse-link-header';
-
-export const PER_PAGE = 4;
+import {PER_PAGE} from '../../utils/consts';
 
 const defaultParams = {
   per_page: PER_PAGE,

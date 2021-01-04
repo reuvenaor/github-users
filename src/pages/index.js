@@ -1,11 +1,11 @@
 
 
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 import Main from '../components/containers/main';
 import { useDispatch } from 'react-redux'
-import {findUsers} from '../store/actions';
+import { findUsers } from '../store/actions';
 import InfiniteScroll from '../components/infiniteScroll/index';
-
+import SearchBar from '../components/searchBar';
 
 const Home = (props) => {
 
@@ -13,11 +13,12 @@ const Home = (props) => {
 
   useEffect(() => {
     dispatch(findUsers('reuven'))
-  },[])
+  }, [])
 
   return (
     <Main>
-        <InfiniteScroll />
+      <SearchBar />
+      <InfiniteScroll />
     </Main>
   )
 }

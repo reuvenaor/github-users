@@ -5,13 +5,14 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import { useSelector, useDispatch } from 'react-redux'
 import { addPage, getUsersPaging } from "../../store/actions";
 import {selectUsersStore} from '../../store/selctors';
+import {PER_PAGE} from '../../utils/consts';
 
 
 const InfiniteScroll = () => {
   const loader = useRef(null);
   const usersStore = useSelector(selectUsersStore);
   const dispatch = useDispatch();
-  const isPaging = usersStore.total_count / 4 >= usersStore.page;
+  const isPaging = usersStore.total_count / PER_PAGE >= usersStore.page;
 
   useEffect(() => {
     var options = {
@@ -33,7 +34,7 @@ const InfiniteScroll = () => {
   }
 
   useEffect(() => {
-    console.log('usersStore.total_count ', usersStore.total_count, 'usersStore.page', usersStore.page, usersStore.total_count / 4 >= usersStore.page)
+    console.log('usersStore.total_count ', usersStore.total_count, 'usersStore.page', usersStore.page, usersStore.total_count / PER_PAGE >= usersStore.page)
     if (usersStore.total_count && !isPaging) {
       return;
     }
