@@ -12,6 +12,9 @@ import { useDispatch } from 'react-redux'
 const SearchBarContainer = styled(Paper)`
     padding: 2px 4px;
     display: flex;
+    position: fixed;
+    top: 10px;
+    z-index: 2;
     align-items: center;
     justify-content: space-around;
     flex-direction: row-reverse;

@@ -5,7 +5,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import { useSelector, useDispatch } from 'react-redux'
 import { addPage, getUsersPaging } from "../../store/actions";
 import {selectUsersStore} from '../../store/selctors';
-import {PER_PAGE} from '../../utils/consts';
+import {PER_PAGE, SCROLL_HEIGHT} from '../../utils/consts';
 
 
 const InfiniteScroll = () => {
@@ -42,7 +42,7 @@ const InfiniteScroll = () => {
   }, [usersStore.page])
 
   return (
-    <ContainerList>
+    <ContainerList height={SCROLL_HEIGHT}>
       <InfiniteList data={usersStore.users} />
 
       <div className="loading" ref={loader}  >

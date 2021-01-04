@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 
 export default styled.div`
-    height: 90vh;
+    height: ${props => props.height };
     margin: 0 auto;
     overflow: scroll;
 `;

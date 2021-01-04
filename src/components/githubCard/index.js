@@ -4,13 +4,13 @@ import Avatar from '@material-ui/core/Avatar';
 
 import styled from 'styled-components';
 import Divider from '@material-ui/core/Divider';
-import {PER_PAGE} from '../../utils/consts';
+import {PER_PAGE, SCROLL_HEIGHT} from '../../utils/consts';
 
 
 const CardContainer = styled.div`
 padding: 5px 10px;
 display: flex;
-height: ${props => `calc(90vh / ${props.perpage})` };
+height: ${props => `calc(${props.height} / ${props.perpage})` };
 margin-top: 15px;
 width: 100vw;
 align-items: center;
@@ -22,7 +22,7 @@ const githubCard = ({ data }) => {
   console.log('user data', data)
   return (
     <>
-      <CardContainer perpage={PER_PAGE}>
+      <CardContainer perpage={PER_PAGE} height={SCROLL_HEIGHT}>
         <Avatar style={{ height: 100, width: 100 }} alt="Avatar" src={data.avatar_url} />
         <div style={{ height: '100%', flex: 1, width: '30%', overflowWrap: 'break-word', paddingLeft: '1%'  }}>
           <p >{data.login}</p>
