@@ -1,13 +1,13 @@
 
 
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { findUsers } from '../store/actions';
-import { selectLoad } from '../store/selctors'
+// import { useEffect } from 'react'
+// import { useDispatch, useSelector } from 'react-redux'
+// import { findUsers } from '../store/actions';
+// import { selectLoad } from '../store/selctors'
 import InfiniteScroll from '../components/infiniteScroll/index';
 import TopBar from '../components/topBar';
 import styled from 'styled-components'
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '../components/circleProgress'
 
 
 const Main = styled.main`
@@ -19,21 +19,11 @@ const Main = styled.main`
   flex-direction: column;
 `
 
-const Home = (props) => {
-
-  const dispatch = useDispatch();
-  const load = useSelector(selectLoad);
-
-  console.log('load', load)
-
-  useEffect(() => {
-    dispatch(findUsers('reuven'))
-  }, [])
+const Home = () => {
 
   return (
     <Main>
-      {load ? <CircularProgress style={{position: 'fixed'}}/> : null}
-
+      <CircularProgress />
       <TopBar />
       <InfiniteScroll />
     </Main>

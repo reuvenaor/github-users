@@ -3,6 +3,7 @@ import SearchBar from '../searchBar'
 
 const TopBarContainer = styled.div`
   display: flex; 
+  width: 100vw;
   flex-direction: column;
   justify-content: center;
   align-items: center;
