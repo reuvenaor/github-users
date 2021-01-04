@@ -13,6 +13,10 @@ export function addPage () {
   return { type: ActionsType.ADD_PAGE}
 }
 
-export function getUsersPaging (page) {
+export function getUsersPaging () {
   return { type: ActionsType.GET_USERS_PAGING}
+}
+
+export function setLoad () {
+  return { type: ActionsType.SET_LOAD}
 }

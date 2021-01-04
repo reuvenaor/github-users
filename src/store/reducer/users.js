@@ -4,7 +4,8 @@ const initialState = {
   page: 1,
   total_count: 1,
   query: 1,
-  users: []
+  users: [],
+  load: false
 };
 
 function rootReducer(state = initialState, action) {
@@ -16,6 +17,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         users: action.payload.users,
         total_count: action.payload.total_count,
+        load: false,
       };
     case ActionsType.FIND_USERS:
       return {
@@ -28,6 +30,12 @@ function rootReducer(state = initialState, action) {
         ...state,
         page: state.page + 1,
       };
+
+    case ActionsType.SET_LOAD: 
+      return {
+        ...state,
+        load: true
+      }
     default:
       return state;
   }

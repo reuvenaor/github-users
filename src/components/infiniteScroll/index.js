@@ -49,7 +49,7 @@ const InfiniteScroll = () => {
     <ContainerList height={SCROLL_HEIGHT}>
       <InfiniteList data={usersStore.users} />
 
-      <div className="loading" ref={loader}  >
+      <div ref={loader}  >
         {isPaging ? <LinearProgress style={{width: 'calc(100vw - 110px'}}/> : null}
         <p style={{ fontSize: '10px', visibility: 'hidden' }}>.</p>
       </div>
