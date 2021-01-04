@@ -1,5 +1,7 @@
 import {fork} from 'redux-saga/effects'
 
-export default function* rootSaga() {
+import {findUserSagaWatcher} from './githubUsersSaga';
 
+export default function* rootSaga() {
+  yield fork(findUserSagaWatcher);
 }
