@@ -1,8 +1,7 @@
 
 ## Github Users
 
-### Please add .env file in the root folder with your own github token. 
-### name it: GITHUB_TOKEN
+#### ** Please add .env file in the root folder with your own github token (as GITHUB_TOKEN)
 
 Run the development server:
 
