@@ -10,3 +10,12 @@ export function findUsers (query) {
   console.log('findUsers Action', query)
   return { type: ActionsType.FIND_USERS, query}
 }
+
+export function addPage () {
+  console.log('addPage Action')
+  return { type: ActionsType.ADD_PAGE}
+}
+
+export function getUsersPaging (page) {
+  return { type: ActionsType.GET_USERS_PAGING}
+}

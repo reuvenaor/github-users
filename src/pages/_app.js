@@ -19,13 +19,41 @@ const theme = {
   // borderRadius: '1000px'
 };
 
-// const GlobalStyle = createGlobalStyle`
-//   body {
-//     margin: 0;
-//     padding: 0;
-//     box-sizing: border-box;
-//   }
-// `
+const GlobalStyle = createGlobalStyle`
+ html {
+  scroll-behavior: smooth;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  -ms-text-size-adjust: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+ }
+  body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow-x: hidden;
+  }
+  ::-webkit-scrollbar {
+  display: none;
+}
+
+  ::-webkit-scrollbar-track {
+    display: none;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    display: none;
+  }
+
+  :-moz-scrollbar-thumb {
+    display: none;
+  }
+`
 
 class WrappedApp extends App {
   static getInitialProps = async ({ Component, ctx }) => {
@@ -57,9 +85,11 @@ class WrappedApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return <>
+
       <StylesProvider jss={jss} >
         <ThemeProvider theme={theme}>
           <MuiThemeProvider theme={theme} >
+            <GlobalStyle />
             <CssBaseline />
             <Component {...pageProps} />
           </MuiThemeProvider>

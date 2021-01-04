@@ -2,12 +2,13 @@
 
 import {useEffect} from 'react'
 import Main from '../components/containers/main';
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import {findUsers} from '../store/actions';
+import InfiniteScroll from '../components/infiniteScroll/index';
+
 
 const Home = (props) => {
 
-  const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,7 +17,7 @@ const Home = (props) => {
 
   return (
     <Main>
-
+        <InfiniteScroll />
     </Main>
   )
 }
