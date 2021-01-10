@@ -2,7 +2,7 @@ import ActionsType from '../types';
 
 const initialState = {
   page: 1,
-  total_count: 1,
+  total_count: 0,
   query: 1,
   users: [],
   load: false
@@ -11,7 +11,12 @@ const initialState = {
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case ActionsType.HYDRATE:
-      return { ...state }; // , ...action.payload
+      return {
+        ...state,
+        users: action.payload.users.users,
+        total_count: action.payload.users.total_count,
+        load: false,
+      };
     case ActionsType.SET_USERS:
       return {
         ...state,
@@ -31,7 +36,7 @@ function rootReducer(state = initialState, action) {
         page: state.page + 1,
       };
 
-    case ActionsType.SET_LOAD: 
+    case ActionsType.SET_LOAD:
       return {
         ...state,
         load: true

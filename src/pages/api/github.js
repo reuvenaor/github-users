@@ -35,7 +35,12 @@ export default async (req, res) => {
 
     const paging = addPagination(gitRes);
 
-    res.status(200).json({ page: paging });
+    if (res) {
+      res.status(200).json({ page: paging });
+    } else {
+      return {data: gitRes, page}
+    }
+
 
   } catch (error) {
     console.log('error in github.js api,', error)

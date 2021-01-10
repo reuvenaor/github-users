@@ -3,15 +3,25 @@ import InfiniteList from './InfiniteList';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { useSelector, useDispatch } from 'react-redux'
 import { addPage, getUsersPaging } from "../../store/actions";
-import {selectUsersStore} from '../../store/selctors';
-import {PER_PAGE, SCROLL_HEIGHT} from '../../utils/consts';
+import { selectUsersStore } from '../../store/selctors';
+import { PER_PAGE, SCROLL_HEIGHT } from '../../utils/consts';
 import styled from 'styled-components';
 
-const ContainerList =styled.div`
-    height: ${props => props.height };
+const ContainerList = styled.div`
+    height: ${props => props.height};
     margin: 0 auto;
+    padding-bottom: 50px;
     overflow: scroll;
 `;
+
+const Threshold = styled.p`
+  font-size: 10px; 
+  visibility: hidden;
+`
+
+const LinearProgressSt = styled(LinearProgress)`
+  width: calc(100vw - 110px);
+`
 
 const InfiniteScroll = () => {
   const loader = useRef(null);
@@ -22,8 +32,8 @@ const InfiniteScroll = () => {
   useEffect(() => {
     var options = {
       root: null,
-      rootMargin: "20px",
-      threshold: 1.0
+      rootMargin: "10px",
+      threshold: 0.99
     };
     const observer = new IntersectionObserver(handleObserver, options);
     if (loader.current) {
@@ -50,8 +60,8 @@ const InfiniteScroll = () => {
       <InfiniteList data={usersStore.users} />
 
       <div ref={loader}  >
-        {isPaging ? <LinearProgress style={{width: 'calc(100vw - 110px'}}/> : null}
-        <p style={{ fontSize: '10px', visibility: 'hidden' }}>.</p>
+        {isPaging ? <LinearProgressSt /> : null}
+        <Threshold>...</Threshold>
       </div>
     </ContainerList>
   )

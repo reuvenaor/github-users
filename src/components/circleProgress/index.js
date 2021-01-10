@@ -8,7 +8,7 @@ const circleProgress = () => {
 
   const load = useSelector(selectLoad);
 
-  return load ? <CircularProgress style={{position: 'fixed'}}/> : null
+  return load ? <CircularProgress style={{position: 'fixed'}}  /> : null
   
 }
 
